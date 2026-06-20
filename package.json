@@ -7,7 +7,7 @@
     "test": "playwright test",
     "test:headed": "playwright test --headed",
     "test:debug": "playwright test --debug",
-    "report": "playwright show-report",
+    "report": "playwright show-report --port 9324",
     "typecheck": "tsc --noEmit",
     "lint": "eslint . --ext .ts"
   },

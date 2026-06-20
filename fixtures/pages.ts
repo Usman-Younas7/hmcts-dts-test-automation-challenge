@@ -17,7 +17,7 @@ export const test = base.extend<PageFixtures>({
   }
 });
 
-test.beforeEach(async (_fixtures, testInfo) => {
+test.beforeEach(async ({ page: _page }, testInfo) => {
   logger.info(`Starting test: ${testInfo.title}`);
 });
 
