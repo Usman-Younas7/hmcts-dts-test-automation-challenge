@@ -52,6 +52,24 @@ Open the HTML report:
 npm run report
 ```
 
+Run smoke tests only:
+
+```bash
+npx playwright test --grep @smoke
+```
+
+Run negative tests only:
+
+```bash
+npx playwright test --grep @negative
+```
+
+Run regression tests only:
+
+```bash
+npx playwright test --grep @regression
+```
+
 ## Test Coverage
 
 The login test suite covers:
