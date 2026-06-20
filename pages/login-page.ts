@@ -18,13 +18,19 @@ export class LoginPage {
 
   async goto(): Promise<void> {
     await this.page.goto('/');
-    await expect(this.loginButton).toBeVisible();
+    await this.expectLoginFormVisible();
   }
 
   async login(user: LoginUser): Promise<void> {
     await this.usernameInput.fill(user.username);
     await this.passwordInput.fill(user.password);
     await this.loginButton.click();
+  }
+
+  async expectLoginFormVisible(): Promise<void> {
+    await expect(this.usernameInput).toBeVisible();
+    await expect(this.passwordInput).toBeVisible();
+    await expect(this.loginButton).toBeVisible();
   }
 
   async expectLoginSuccessful(): Promise<void> {

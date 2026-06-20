@@ -46,6 +46,13 @@ Run all tests:
 npm test
 ```
 
+Run static checks:
+
+```bash
+npm run typecheck
+npm run lint
+```
+
 Run tests in headed mode:
 
 ```bash
@@ -87,6 +94,7 @@ npx playwright test --grep @regression
 The login test suite covers:
 
 - Successful login with a standard user
+- Logout after successful authentication
 - Invalid username and password
 - Valid username with wrong password
 - Invalid username with valid password
@@ -109,6 +117,8 @@ Negative login scenarios are data-driven. The inputs and expected errors are def
 
 Fixtures in `fixtures/pages.ts` create reusable page objects and centralise test lifecycle logging, setup, teardown, and failure screenshots.
 
+The framework uses Playwright's isolated browser contexts for test teardown. The positive login test also logs out after authentication to verify the application can return to a clean login state.
+
 Environment configuration is loaded from `.env`, allowing values such as `BASE_URL` to be changed without editing the test code.
 
 ## Logging and Reporting
@@ -122,3 +132,7 @@ Playwright generates an HTML report after each test run. On failures, the framew
 - trace file
 
 These artefacts help with debugging failed test runs.
+
+## Continuous Integration
+
+The GitHub Actions workflow runs on push and pull request to `main`. It installs dependencies, installs Playwright browsers, runs type-checking, linting, and the test suite, then uploads the Playwright HTML report as an artefact.

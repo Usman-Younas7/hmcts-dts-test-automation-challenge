@@ -1,18 +1,23 @@
 import { test as base } from '@playwright/test';
+import { InventoryPage } from '../pages/inventory-page';
 import { LoginPage } from '../pages/login-page';
 import { logger } from '../utils/logger';
 
 type PageFixtures = {
+  inventoryPage: InventoryPage;
   loginPage: LoginPage;
 };
 
 export const test = base.extend<PageFixtures>({
+  inventoryPage: async ({ page }, use) => {
+    await use(new InventoryPage(page));
+  },
   loginPage: async ({ page }, use) => {
     await use(new LoginPage(page));
   }
 });
 
-test.beforeEach(async ({}, testInfo) => {
+test.beforeEach(async (_fixtures, testInfo) => {
   logger.info(`Starting test: ${testInfo.title}`);
 });
 
