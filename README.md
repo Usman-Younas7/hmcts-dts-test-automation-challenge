@@ -105,6 +105,8 @@ The framework uses the Page Object Model to separate test intent from page inter
 
 Test data is stored separately in `test-data/users.ts`, which avoids hard-coding credentials across test files and makes it simple to add more login scenarios.
 
+Negative login scenarios are data-driven. The inputs and expected errors are defined once, then the test file loops through those cases to avoid repeating the same test steps.
+
 Fixtures in `fixtures/pages.ts` create reusable page objects and centralise test lifecycle logging, setup, teardown, and failure screenshots.
 
 Environment configuration is loaded from `.env`, allowing values such as `BASE_URL` to be changed without editing the test code.

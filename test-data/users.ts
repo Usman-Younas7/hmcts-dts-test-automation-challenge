@@ -52,3 +52,51 @@ export const loginErrors = {
   usernameRequired: 'Epic sadface: Username is required',
   passwordRequired: 'Epic sadface: Password is required'
 };
+
+export const negativeLoginCases = [
+  {
+    name: 'invalid credentials',
+    user: users.invalid,
+    expectedError: loginErrors.invalidCredentials
+  },
+  {
+    name: 'valid username with wrong password',
+    user: users.validUsernameWrongPassword,
+    expectedError: loginErrors.invalidCredentials
+  },
+  {
+    name: 'invalid username with valid password',
+    user: users.invalidUsernameValidPassword,
+    expectedError: loginErrors.invalidCredentials
+  },
+  {
+    name: 'locked out user',
+    user: users.lockedOut,
+    expectedError: loginErrors.lockedOut
+  },
+  {
+    name: 'missing username',
+    user: users.emptyUsername,
+    expectedError: loginErrors.usernameRequired
+  },
+  {
+    name: 'missing password',
+    user: users.emptyPassword,
+    expectedError: loginErrors.passwordRequired
+  },
+  {
+    name: 'missing username and password',
+    user: users.emptyCredentials,
+    expectedError: loginErrors.usernameRequired
+  },
+  {
+    name: 'username casing does not match',
+    user: users.uppercaseUsername,
+    expectedError: loginErrors.invalidCredentials
+  },
+  {
+    name: 'username contains extra whitespace',
+    user: users.usernameWithWhitespace,
+    expectedError: loginErrors.invalidCredentials
+  }
+];
