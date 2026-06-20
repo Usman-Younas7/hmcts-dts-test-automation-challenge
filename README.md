@@ -26,6 +26,18 @@ Install Playwright browsers:
 npx playwright install
 ```
 
+Optional: create a local `.env` file from the example file if you want to change the target URL:
+
+```bash
+cp .env.example .env
+```
+
+The default value is:
+
+```env
+BASE_URL=https://www.saucedemo.com
+```
+
 ## Running Tests
 
 Run all tests:
@@ -94,6 +106,8 @@ The framework uses the Page Object Model to separate test intent from page inter
 Test data is stored separately in `test-data/users.ts`, which avoids hard-coding credentials across test files and makes it simple to add more login scenarios.
 
 Fixtures in `fixtures/pages.ts` create reusable page objects and centralise test lifecycle logging, setup, teardown, and failure screenshots.
+
+Environment configuration is loaded from `.env`, allowing values such as `BASE_URL` to be changed without editing the test code.
 
 ## Logging and Reporting
 
