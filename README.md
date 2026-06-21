@@ -138,3 +138,11 @@ These artefacts help with debugging failed test runs.
 ## Continuous Integration
 
 The GitHub Actions workflow runs on push and pull request to `main`. It installs dependencies with `npm ci` from `package-lock.json`, installs Playwright browsers, runs type-checking, linting, and the test suite, then uploads the Playwright HTML report as an artefact.
+
+## Future Improvements
+
+Given more time, I would extend the framework in the following areas:
+
+- Add cross-browser coverage for Firefox and WebKit to increase confidence beyond Chromium.
+- Add accessibility checks with axe-core for the login page, supported by manual keyboard navigation checks.
+- Move test credentials into environment variables or a secure test data provider if testing against a non-demo application.
