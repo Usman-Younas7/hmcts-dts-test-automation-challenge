@@ -14,13 +14,15 @@ Sauce Demo was chosen because it is a stable public demo application with realis
 
 ## Setup
 
+Prerequisite:
+
+- Node.js 20 LTS
+
 Install dependencies:
 
 ```bash
-npm ci
+npm install
 ```
-
-Use `npm install` only when adding or changing dependencies, then commit the updated `package-lock.json`.
 
 Install Playwright browsers:
 
@@ -137,7 +139,7 @@ These artefacts help with debugging failed test runs.
 
 ## Continuous Integration
 
-The GitHub Actions workflow runs on push and pull request to `main`. It installs dependencies with `npm ci` from `package-lock.json`, installs Playwright browsers, runs type-checking, linting, and the test suite, then uploads the Playwright HTML report as an artefact.
+The GitHub Actions workflow runs on push and pull request to `main`. It installs dependencies with `npm install`, installs Playwright browsers, runs type-checking, linting, and the test suite, then uploads the Playwright HTML report as an artefact.
 
 ## Future Improvements
 
