@@ -105,6 +105,8 @@ Update approved visual baselines after an intentional UI change:
 npm run test:visual -- --update-snapshots
 ```
 
+Visual snapshots are environment-specific. If running visual tests on a different machine, review and approve a local baseline first using the update command above, then rerun `npm run test:visual`.
+
 ## Test Coverage
 
 The login test suite covers:
