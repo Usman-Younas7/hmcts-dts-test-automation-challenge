@@ -44,7 +44,7 @@ BASE_URL=https://www.saucedemo.com
 
 ## Running Tests
 
-Run all tests:
+Run the functional login tests:
 
 ```bash
 npm test
@@ -90,19 +90,19 @@ npx playwright test --grep @negative
 Run regression tests only:
 
 ```bash
-npx playwright test --grep @regression
+npx playwright test --grep "@regression" --grep-invert "@visual"
 ```
 
 Run visual regression tests only:
 
 ```bash
-npx playwright test --grep @visual
+npm run test:visual
 ```
 
 Update approved visual baselines after an intentional UI change:
 
 ```bash
-npx playwright test --grep @visual --update-snapshots
+npm run test:visual -- --update-snapshots
 ```
 
 ## Test Coverage
@@ -138,7 +138,7 @@ The framework uses Playwright's isolated browser contexts for test teardown. The
 
 Environment configuration is loaded from `.env`, allowing values such as `BASE_URL` to be changed without editing the test code.
 
-Visual regression coverage uses Playwright screenshot assertions to compare the login page against an approved baseline. The screenshot threshold is kept low so small rendering differences do not create unnecessary failures while still detecting meaningful visual changes.
+Visual regression coverage uses Playwright screenshot assertions to compare the login page against an approved baseline. Visual snapshots can differ between operating systems, browsers, and rendering environments, so they are run separately from the default functional suite.
 
 ## Logging and Reporting
 
@@ -154,7 +154,7 @@ These artefacts help with debugging failed test runs.
 
 ## Continuous Integration
 
-The GitHub Actions workflow runs on push and pull request to `main`. It installs dependencies with `npm install`, installs Playwright browsers, runs type-checking, linting, and the test suite, then uploads the Playwright HTML report as an artefact.
+The GitHub Actions workflow runs on push and pull request to `main`. It installs dependencies with `npm install`, installs Playwright browsers, runs type-checking, linting, and the functional test suite, then uploads the Playwright HTML report as an artefact.
 
 ## Future Improvements
 
