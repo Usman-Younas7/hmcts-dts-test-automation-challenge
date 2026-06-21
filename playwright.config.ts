@@ -5,7 +5,10 @@ export default defineConfig({
   testDir: './tests',
   timeout: 30_000,
   expect: {
-    timeout: 5_000
+    timeout: 5_000,
+    toHaveScreenshot: {
+      maxDiffPixelRatio: 0.01
+    }
   },
   fullyParallel: true,
   forbidOnly: !!process.env.CI,

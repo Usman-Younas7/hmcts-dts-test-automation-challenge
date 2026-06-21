@@ -93,6 +93,18 @@ Run regression tests only:
 npx playwright test --grep @regression
 ```
 
+Run visual regression tests only:
+
+```bash
+npx playwright test --grep @visual
+```
+
+Update approved visual baselines after an intentional UI change:
+
+```bash
+npx playwright test --grep @visual --update-snapshots
+```
+
 ## Test Coverage
 
 The login test suite covers:
@@ -108,6 +120,7 @@ The login test suite covers:
 - Missing username and password
 - Case-sensitive username validation
 - Whitespace handling in username
+- Login page visual regression baseline
 
 ## Design Choices
 
@@ -124,6 +137,8 @@ Fixtures in `fixtures/pages.ts` create reusable page objects and centralise test
 The framework uses Playwright's isolated browser contexts for test teardown. The positive login test also logs out after authentication to verify the application can return to a clean login state.
 
 Environment configuration is loaded from `.env`, allowing values such as `BASE_URL` to be changed without editing the test code.
+
+Visual regression coverage uses Playwright screenshot assertions to compare the login page against an approved baseline. The screenshot threshold is kept low so small rendering differences do not create unnecessary failures while still detecting meaningful visual changes.
 
 ## Logging and Reporting
 
